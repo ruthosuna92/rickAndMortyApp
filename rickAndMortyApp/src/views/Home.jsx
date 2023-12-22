@@ -1,23 +1,19 @@
-import { useSelector } from "react-redux";
+
+import Alert from "../components/Alert";
+import Cards from "../components/Cards";
 
 
 
 const Home = () => {
     
-    const allCharacters = useSelector((state) => state.allCharacters)
-    console.log(allCharacters)
-    return <div className="grid grid-rows-3 grid-flow-col gap-4">
-        {allCharacters?.map((char) => {
-            return <div key={char?.id}>
-                <p>Name: {char?.name}</p>
-                <p>Status: {char?.status}</p>
-                <p>Specie: {char?.species}</p>
-                <p>Gender: {char?.gender}</p>
-                <p>Origin: {char?.origin?.name}</p>
-                <img src={char?.image} alt={char?.name}/>
-            </div>
-        })}
+    return  <div className="h-screen overflow-hidden relative">
+    {/* Contenido de la aplicación con scroll */}
+    <div className="relative z-10 h-full overflow-y-scroll bg-transparent p-4">
+      {/* Agrega tu contenido, por ejemplo, el componente Cards */}
+      
+      <Cards />
     </div>
+  </div>
 }
 
 export default Home;
