@@ -38,7 +38,15 @@ const SearchBar = () => {
 
     const handleRandom = () => {
         navigate("/")
-        dispatch(getRandomCharacter())
+        if (allCharacters.some((char) => char.id === Number(id))) {
+            const object = {
+                isOpen: true,
+                message: "This character already exists."
+            }
+            dispatch(setAlert(object))
+        } else {
+            dispatch(getRandomCharacter())
+        }
     }
 
     return <div className="flex flex-row gap-2">

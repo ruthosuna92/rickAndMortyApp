@@ -1,4 +1,4 @@
-import { DELETE_CHARACTER, GET_CHARACTERS, SET_ALERT, GET_RANDOM_CHARACTERS, IS_FAV, IS_NOT_FAV} from "./actionTypes"
+import { DELETE_CHARACTER, GET_CHARACTERS, SET_ALERT, GET_RANDOM_CHARACTERS, IS_FAV, IS_NOT_FAV, GET_CHARACTER_DETAIL, CLEAN_CHARACTER} from "./actionTypes"
 
 const initialState = {
     count: 0,
@@ -7,7 +7,8 @@ const initialState = {
         isOpen: false,
         message: ""
     },
-    allFavoritesCharacters: []
+    allFavoritesCharacters: [],
+    characterDetail: {}
 }
 
 
@@ -24,7 +25,7 @@ const reducer = (state = initialState, action) => {
                 count: state.count > 0 ? state.count - 1 : 0
             }
         case GET_CHARACTERS:
-            console.log(action.payload)
+            
             return {
                 ...state,
                 allCharacters: [...state.allCharacters, action.payload]
@@ -40,7 +41,8 @@ const reducer = (state = initialState, action) => {
         case DELETE_CHARACTER:
             return {
                 ...state,
-                allCharacters: state.allCharacters.filter((char) => char.id !== Number(action.payload))
+                allCharacters: state.allCharacters.filter((char) => char.id !== Number(action.payload)),
+                allFavoritesCharacters: state.allFavoritesCharacters.filter((char) => char.id !== Number(action.payload))
             }
         case GET_RANDOM_CHARACTERS:
             return {
@@ -61,6 +63,18 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 allFavoritesCharacters: newAllFavorites
+            }
+        case GET_CHARACTER_DETAIL:
+            console.log(action.payload)
+            console.log("in the case GET CHARACTER DETAIL")
+            return {
+                ...state,
+                characterDetail: action.payload
+            }
+        case CLEAN_CHARACTER:
+            return {
+                ...state,
+                characterDetail: {}
             }
         default:
             return {

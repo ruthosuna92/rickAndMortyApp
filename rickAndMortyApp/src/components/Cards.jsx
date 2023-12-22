@@ -9,7 +9,7 @@ const Cards = () => {
    const alert = useSelector((state) => state.alert) 
 
 
-    return <div className="flex flex-wrap gap-5 m-5 justify-center" >
+    return <div className="flex flex-wrap gap-5 m-5 justify-center m-2" >
         
         {allCharacters?.map(({name, id, status, species, origin, image, gender}) => {
 

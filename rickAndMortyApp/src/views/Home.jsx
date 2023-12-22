@@ -6,10 +6,10 @@ import Cards from "../components/Cards";
 
 const Home = () => {
     
-    return  <div className="h-screen overflow-hidden relative">
-    {/* Contenido de la aplicación con scroll */}
-    <div className="relative z-10 h-full overflow-y-scroll bg-transparent p-4">
-      {/* Agrega tu contenido, por ejemplo, el componente Cards */}
+    return  <div className="relative ">
+    
+    <div className=" relative z-10 h-full overflow-y-auto bg-transparent p-4 ">
+      
       
       <Cards />
     </div>
